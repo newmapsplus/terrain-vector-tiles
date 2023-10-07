@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>Kentucky hillshade with terrain tiles</title>
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <script src="https://unpkg.com/maplibre-gl@3.0.1/dist/maplibre-gl.js"></script>
+  <link href="https://unpkg.com/maplibre-gl@3.0.1/dist/maplibre-gl.css" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    #map {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="map"></div>
+  <script>
+    var map = new maplibregl.Map({
+      container: 'map',
+      style: {  // "scripts/style.json",
+        "version": 8,
+        sources: {
+          terrain: {
+            type: "raster-dem",
+            // https://registry.opendata.aws/terrain-tiles/
+            url: "terrain.json",
+            tileSize: 256,
+          },
+          hillshade: {
+            type: "raster",
+            tiles: [
+              "https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png",
+            ],
+            tileSize: 256,
+            maxzoom: 15,
+          },
+        },
+        layers: [
+          {
+            id: "hillshade",
+            type: "raster",
+            source: "hillshade",
+          },
+        ],
+      },
+      center: [-84.21841, 37.5611],
+      zoom: 13.44,
+      pitch: 56,
+      bearing: 24.8,
+      hash: true,
+    });
+
+    map.on('load', function () {
+      map.setTerrain({
+        id: "terrain",
+        exaggeration: 2,
+        source: "terrain"
+      });
+    });
+  </script>
+
+</body>
+
+</html>

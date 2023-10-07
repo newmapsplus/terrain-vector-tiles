@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title>3D & vector tiles</title>
+
+    <link rel="stylesheet" href="https://uky-gis.github.io/geo509/slides/dist/reset.css" />
+    <link rel="stylesheet" href="https://uky-gis.github.io/geo509/slides/dist/reveal.css" />
+    <link rel="stylesheet" href="https://uky-gis.github.io/geo509/slides/dist/theme/league-109.css" id="theme" />
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="https://uky-gis.github.io/geo509/slides/dist/plugin/highlight/zenburn.css"
+        id="highlight-theme" />
+    <style>
+        /* UK Colors: 
+                #c7c9c8 light gray 
+                #63666a dark gray
+                #15397f dark blue
+                #009bda light blue
+                #0033a0 official blue
+            */
+
+        .top-module {
+            position: absolute;
+            bottom: 1.5em;
+            left: 20px;
+            z-index: 3333;
+            font-size: 0.5em;
+            opacity: 0.5;
+        }
+
+        .item-download {
+            position: absolute !important;
+            /* left: 0 !important;
+      bottom: 0 !important; */
+            transform: translate(calc(100vw/2*-1), 100px) !important;
+            z-index: 9999;
+            font-size: 0.5em;
+            opacity: 1;
+        }
+
+        .highlight-p {
+            background-color: #63666a;
+            padding: 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="top-module">
+            <a target='_blank' href="https://github.com/newmapsplus/terrain-vector-tiles/">Repo</a>
+        </div>
+        <div class="slides">
+            <section data-pre-load
+                data-background-image="https://outragegis.com/weather/img/animation/yesterday/LookRock.gif"
+                data-background-opacity="0.4">
+                <h5>3D & vector tiles</h5>
+                <h4>Join along @<a href="https://boyd.xyz/w">boyd.xyz/v</a></h4>
+                <!-- <h2>Welcome</h2> -->
+                <div class="ll" style="opacity:60%;">
+                    Yesterday in the Great Smokies<br />Webcam
+                    <a href="https://www.outragegis.com/weather/img/animation" target="_blank">archive</a>
+                </div>
+                <div class='lr'>Open-source and self-hosted web map solutions</div>
+            </section>
+            <section data-pre-load
+                data-background-image="https://outragegis.com/weather/img/animation/yesterday/LookRock.gif"
+                data-background-opacity="0.4">
+                <img width="100%" src="https://uky-gis.github.io/geo509/slides/images/logo-uk-geo.png" />
+
+            </section>
+
+            <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2">
+                <h3>Boyd Shearer</h3>
+                <ul>
+                    <li class='fragment'>
+                        Lecturer, UKy Department of Geography.
+                    </li>
+                    <li class='fragment'>
+                        Online Digital Mapping program <a href="https://newmapsplus.as.uky.edu/" target="_blank">🔗</a>
+                    </li>
+                    <li class='fragment'>
+                        outrageGIS mapping topographic trail maps. <a href="https://outragegis.com/"
+                            target="_blank">🔗</a>
+                    </li>
+                    <li class='fragment'>
+                        <a href="https://newmapsplus.as.uky.edu/users/blshea1" target="_blank">Contact</a>.
+                    </li>
+                </ul>
+            </section>
+
+            <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2">
+                <h3>UKy Digital Mapping</h3>
+                <ul>
+                    <li class='fragment'>
+                        Started in 2015
+                    </li>
+                    <li class='fragment'>
+                        and was called New Maps Plus.
+                    </li>
+                    <li class='fragment'>
+                        Open-source GIS and web mapping.
+                    </li>
+                    <li class='fragment'>
+                        25+ MS Digital Mapping degrees awarded.
+                    </li>
+                    <li class='fragment'>
+                        100+ Graduate Certificates awarded.
+                    </li>
+                </ul>
+            </section>
+
+            <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2">
+                <h3>Have long wanted to add 3D to the curriculum</h3>
+            </section>
+
+            <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2">
+                <h3>
+                    with self-hosted terrain and vector tiles.
+                </h3>
+            </section>
+
+            <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2">
+                <h3>Existing providers</h3>
+                <ul>
+                    <li class='fragment'>
+                        Mapbox <a href="https://www.mapbox.com/pricing">🔗</a>
+                    </li>
+                    <li class='fragment'>
+                        Maptiler Cloud <a href="https://www.maptiler.com/cloud/pricing/">🔗</a>
+                    </li>
+                    <li class='fragment'>
+                        Both offer vector tiles and 3D terrain tiles
+                    </li>
+                    <li class='fragment'>
+                        using the JavaScript Mapbox GL API
+                    </li>
+                    <li class='fragment'>
+                        sorta.
+                    </li>
+                </ul>
+            </section>
+
+            <section data-pre-load data-background-iframe="basic" data-background-opacity="1">
+            </section>
+
+            <section data-pre-load data-background-iframe="terrain-rgb/#9.83/36.6683/-83.8133/0/60"
+                data-background-opacity="1">
+            </section>
+
+            <section data-pre-load data-background-iframe="map/dist/#9.83/36.6683/-83.8133/0/60"
+                data-background-opacity="1">
+            </section>
+
+            <section data-pre-load
+                data-background-iframe="https://www.outragegis.com/gorge/map/#14.57/37.80534/-83.63853/0/44"
+                data-background-opacity="1">
+            </section>
+
+            <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2">
+                <h3>Long tradition in cartography of making shaded reliefs.</h3>
+
+            </section>
+
+
+
+
+            <section data-background-image='images/background.jpg' data-background-opacity="0.3">
+                <h2 class='r-fit-text'>Methods</h2>
+
+            </section>
+
+            <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2">
+                <h3>Workflow</h3>
+                <ul>
+                    <li class='fragment'>
+                        Create DSM in ArcGIS Pro.
+                        <ul>
+                            <li class="fragment"><a
+                                    href="https://www.linkedin.com/pulse/how-create-digital-surface-model-dsm-raster-entire-oz-sariyildiz/?published=t"
+                                    target="_blank">Ky_DSM_First_Return_5FT_Phase1</a></li>
+                        </ul>
+                    </li>
+                    <li class='fragment'>
+                        Export as scaled 16-bit TIFF raster with world file.
+                    </li>
+                    <li class='fragment'>
+                        Render in Blender matching original raster aspect ratio.
+                    </li>
+                    <li class='fragment'>
+                        Using world file, bring raster back into AP and color with NDVI.
+                    </li>
+                </ul>
+            </section>
+            <section data-background-image='images/background.jpg' data-background-opacity="0.3">
+                <h2 class='r-fit-text'>Python <a href="shaded-relief.ipynb">Notebook</a> </h2>
+                <p class="fragment">Some notable cells from the notebook...</p>
+            </section>
+
+            <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2"
+                data-markdown data-separator="___" data-background-color=#2D2D2D>
+                <textarea data-template>
+```py [1-2|4-5|7-8]
+# Above ground, first return DSM for entire state
+dsm = 'https://kyraster.ky.gov/arcgis/rest/services/ElevationServices/Ky_DSM_First_Return_5FT_Phase1/ImageServer'
+
+# Load raster
+a = arcpy.sa.Raster(dsm)
+
+# verify
+a
+```
+___
+```py [1-3|5-6|8-11]
+# Extract AOI and save to new layer
+b = arcpy.sa.ExtractByMask(a, 'square_aoi')
+b.save('original')
+
+# Copy original raster to a 16-bit integer raster.
+arcpy.management.CopyRaster(b, 'temp', '#',  '#',  '#',  '#',  '#',  '16_BIT_UNSIGNED', True)
+
+# Load raster and get statistics
+c = arcpy.sa.Raster('temp')
+c.getStatistics()
+```
+___
+```py [1-3|5-8]
+# load low and high values
+lo = c.minimum
+hi = c.maximum
+
+# Rescale raster to full range of integer values in 16-bit format, 0-65,535
+d = ((c - lo) / (hi - lo))*65535
+print(d.getStatistics())
+d.save('scaled')
+```
+___
+```py [1-2|4-6]
+# Export TIFF
+arcpy.management.CopyRaster('scaled', f'{root}\\{folder}\\elevations.tif', '#',  '#',  '#',  '#',  '#',  '16_BIT_UNSIGNED', True)
+
+# Get pixel dimensions of raster for setting Blender parameters
+size = arcpy.GetRasterProperties_management(d, 'COLUMNCOUNT')
+print(f'Use this dimension for the X, Y size in Blender: {size.getOutput(0)}')
+```
+___
+```py [1-4|1-7]
+# Get aerial imagery
+naip = 'https://kyraster.ky.gov/arcgis/rest/services/ImageryServices/Ky_NAIP_2020_2ft/ImageServer'
+e = arcpy.sa.Raster(naip)
+f = arcpy.sa.ExtractByMask(e, 'square_aoi')
+
+#Verify
+f
+```
+___
+```py [1-3|1-6]
+# Make and save NDVI
+g = arcpy.sa.NDVI(f)
+g.save('ndvi')
+
+# Verify
+g
+```
+            </textarea>
+            </section>
+
+            <section data-pre-load
+                data-background-image="https://outragegis.com/weather/img/animation/yesterday/LookRock.gif"
+                data-background-opacity="0.4">
+                <h5>Thank you</h5>
+            </section>
+        </div>
+    </div>
+
+    <script src="https://uky-gis.github.io/geo509/slides/dist/reveal.js"></script>
+    <script src="https://uky-gis.github.io/geo509/slides/dist/plugin/notes/notes.js"></script>
+    <script src="https://uky-gis.github.io/geo509/slides/dist/plugin/markdown/markdown.js"></script>
+    <script src="https://uky-gis.github.io/geo509/slides/dist/plugin/highlight/highlight.js"></script>
+    <script>
+        // More info about initialization & config:
+        // - https://revealjs.com/initialization/
+        // - https://revealjs.com/config/
+        Reveal.initialize({
+            hash: true,
+            backgroundTransition: "fade",
+            // Transition style
+            transition: "fade", // none/fade/slide/convex/concave/zoom
+
+            // Transition speed
+            transitionSpeed: "fast", // default/fast/slow
+
+            // Learn about plugins: https://revealjs.com/plugins/
+            plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+        });
+    </script>
+</body>
+
+</html>
