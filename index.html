@@ -136,24 +136,252 @@
                     <li class='fragment'>
                         Both offer vector tiles and 3D terrain tiles
                     </li>
+                </ul>
+            </section>
+
+            <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2">
+                <h3>Mapzen</h3>
+                <ul>
                     <li class='fragment'>
-                        using the JavaScript Mapbox GL API
+                        Terrain tiles, 2016. <a href="https://www.mapzen.com/blog/terrain-tile-service/">🔗</a>
                     </li>
                     <li class='fragment'>
-                        sorta.
+                        World-wide elevation data from 3DEP, SRTM, etc.
+                    </li>
+                    <li class='fragment'>
+                        Hosted as public domain tiles on AWS S3. <a
+                            href="https://registry.opendata.aws/terrain-tiles/">🔗</a>
                     </li>
                 </ul>
+            </section>
+
+            <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2">
+                <h3>RGB DEM</h3>
+                <ul>
+                    <li class='fragment'>
+                        Browser's can't render high bit-depth rasters.
+                    </li>
+                    <li class='fragment'>
+                        32-bit to 8-bit depth PNG tiles.
+                    </li>
+                    <li class='fragment'>
+                        <code>z_meters = (red * 256 + green + blue / 256) - 32768</code>
+                    </li>
+                </ul>
+            </section>
+
+            <section data-pre-load data-background-image="./images/footprints-preview.png" data-background-color="white"
+                data-background-opacity="1" data-background-size="contain">
+            </section>
+            <section data-pre-load data-background-iframe="terrain-rgb/#9.83/36.6683/-83.8133/0/60"
+                data-background-opacity="1">
+            </section>
+
+            <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2">
+                <h3>MapLibre GL JS</h3>
+                <ul>
+                    <li class='fragment'>
+                        2021 fork of Mapbox GL JS. <a href="https://github.com/maplibre">🔗</a>
+                    </li>
+                    <li class='fragment'>
+                        Open-source WebGL JavaScript library.
+                    </li>
+                    <li class='fragment'>
+                        Renders 3D maps with vector, terrain, and raster tiles.
+                    </li>
+                </ul>
+            </section>
+
+            <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2"
+                data-markdown data-separator="___" data-background-color=#2D2D2D>
+                <textarea data-template>
+            ```html 
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <meta charset="utf-8" />
+                <title>Terrain tiles</title>
+                <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+                <script src="https://unpkg.com/maplibre-gl@3.0.1/dist/maplibre-gl.js"></script>
+                <link href="https://unpkg.com/maplibre-gl@3.0.1/dist/maplibre-gl.css" rel="stylesheet" />
+            ```
+                        </textarea>
+            </section>
+
+            <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2">
+                <h3>Kentucky</h3>
+                <ul>
+                    <li class='fragment'>
+                        Use raster tile services from
+                    </li>
+                    <li class='fragment'>
+                        kygisserver.ky.gov
+                    </li>
+                    <li class='fragment'>
+                        to get multiDirectional hillshade.
+                    </li>
+                </ul>
+            </section>
+
+            <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2"
+                data-markdown data-separator="___" data-background-color=#2D2D2D>
+                <textarea data-template>
+                        ```html 
+                        https://kygisserver.ky.gov/arcgis/rest/services/WGS84WM_Services/Ky_MultiDirectional_Hillshade_WGS84WM/MapServer/tile/{z}/{y}/{x}
+                        ```
+                                    </textarea>
             </section>
 
             <section data-pre-load data-background-iframe="basic" data-background-opacity="1">
             </section>
 
-            <section data-pre-load data-background-iframe="terrain-rgb/#9.83/36.6683/-83.8133/0/60"
+            <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2">
+                <h3>Awesome</h3>
+                <ul>
+                    <li class='fragment'>
+                        3D maps rendered in browser.
+                    </li>
+                    <li class='fragment'>
+                        Completely free with no usage limits.
+                    </li>
+                    <li class='fragment'>
+                        But Ky has higher resolution elevation data
+                    </li>
+                    <li class='fragment'>
+                        and we need storage.
+                    </li>
+                </ul>
+            </section>
+
+            <section data-pre-load data-background-iframe="https://contig.us" data-background-opacity="1">
+            </section>
+
+            <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2">
+                <h3>contig.us</h3>
+                <ul>
+                    <li class='fragment'>
+                        Linux server on Digital Ocean
+                    </li>
+                    <li class='fragment'>
+                        provisioned with open-source geospatial software.
+                    </li>
+                    <li class='fragment'>
+                        Students have SSH access to server.
+                    </li>
+                    <li class='fragment'>
+                        60GB at $18/month.
+                    </li>
+                </ul>
+            </section>
+
+            <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2">
+                <h3>Student goals</h3>
+                <ul>
+                    <li class='fragment'>
+                        Build a data pipeline
+                    </li>
+                    <li class='fragment'>
+                        to create raster and vector tiles
+                    </li>
+                    <li class='fragment'>
+                        hosted on the server.
+                    </li>
+                </ul>
+            </section>
+
+            <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2">
+                <h3>Vector tiles</h3>
+                <ul>
+                    <li class='fragment'>
+                        Tile spec pioneered by Mapbox.
+                    </li>
+                    <li class='fragment'>
+                        Smooth, fast rendering of large datasets
+                    </li>
+                    <li class='fragment'>
+                        but need a vector tile server.
+                    </li>
+                    <li class='fragment'>
+                        That's where you get locked into a provider.
+                    </li>
+                </ul>
+            </section>
+
+            <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2">
+                <h3>PMtiles</h3>
+                <ul>
+                    <li class='fragment'>
+                        "single-file archive format for pyramids of tiled data" <a
+                            href="https://docs.protomaps.com/pmtiles/">🔗</a>
+                    </li>
+                    <li class='fragment'>
+                        provides self-hosted solution.
+                    </li>
+                    <li class='fragment'>
+                        Following example 40MB layer.
+                    </li>
+                </ul>
+            </section>
+
+            <section data-pre-load
+                data-background-iframe="https://protomaps.github.io/PMTiles/?url=https%3A%2F%2Fnyc3.digitaloceanspaces.com%2Fastoria%2Ftiles%2Fvector%2Frrg_contours.pmtiles#map=15.35/37.817393/-83.62711"
                 data-background-opacity="1">
             </section>
 
-            <section data-pre-load data-background-iframe="map/dist/#9.83/36.6683/-83.8133/0/60"
+            <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2">
+                <h3>Pipeline</h3>
+                <ul>
+                    <li class='fragment'>
+                        PostGIS > GDAL > Tippecanoe > PMtiles
+                    </li>
+                    <li class='fragment'>
+                        See <a href="./scripts/create-tiles.sh">scripts/create-tiles.sh</a>
+                    </li>
+                </ul>
+            </section>
+
+
+
+            <section data-pre-load data-background-iframe="map/dist-blender/#9.83/36.6683/-83.8133/0/60"
                 data-background-opacity="1">
+            </section>
+
+            <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2">
+                <h3>KyFromAbove</h3>
+                <ul>
+                    <li class='fragment'>
+                        Create RGB elevation tiles from DEM
+                    </li>
+                    <li class='fragment'>
+                        See <a href="./scripts/create-tiles.sh">scripts/process-terrain.sh</a>
+                    </li>
+                    <li class='fragment'>
+                        Pine Mountain comparison
+                    </li>
+                </ul>
+            </section>
+
+            <section data-pre-load data-background-iframe="map/dist-ky/#16.1/36.74809/-83.692746/-20.8/51"
+                data-background-opacity="1">
+            </section>
+
+            <section data-pre-load data-background-iframe="map/dist/#16.1/36.74809/-83.692746/-20.8/51"
+                data-background-opacity="1">
+            </section>
+
+            <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2">
+                <h3>Size</h3>
+                <ul>
+                    <li class='fragment'>
+                        19 MB tile set per DEM tile.
+                    </li>
+                    <li class='fragment'>
+                        Better methods of creating tiles.
+                    </li>
+                    <li class='fragment'>
+                        425 MB for a location like the Red River Gorge.
+                    </li>
+                </ul>
             </section>
 
             <section data-pre-load
@@ -162,111 +390,27 @@
             </section>
 
             <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2">
-                <h3>Long tradition in cartography of making shaded reliefs.</h3>
-
-            </section>
-
-
-
-
-            <section data-background-image='images/background.jpg' data-background-opacity="0.3">
-                <h2 class='r-fit-text'>Methods</h2>
+                <h3>Does Ky have statewide RGB DEM tiles?</h3>
 
             </section>
 
             <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2">
-                <h3>Workflow</h3>
+                <h3>DSM</h3>
                 <ul>
                     <li class='fragment'>
-                        Create DSM in ArcGIS Pro.
-                        <ul>
-                            <li class="fragment"><a
-                                    href="https://www.linkedin.com/pulse/how-create-digital-surface-model-dsm-raster-entire-oz-sariyildiz/?published=t"
-                                    target="_blank">Ky_DSM_First_Return_5FT_Phase1</a></li>
-                        </ul>
+                        Lidar first-return elevations.
                     </li>
                     <li class='fragment'>
-                        Export as scaled 16-bit TIFF raster with world file.
+                        Create tile set for DSM.
                     </li>
                     <li class='fragment'>
-                        Render in Blender matching original raster aspect ratio.
-                    </li>
-                    <li class='fragment'>
-                        Using world file, bring raster back into AP and color with NDVI.
+                        Problem with tall buildings.
                     </li>
                 </ul>
             </section>
-            <section data-background-image='images/background.jpg' data-background-opacity="0.3">
-                <h2 class='r-fit-text'>Python <a href="shaded-relief.ipynb">Notebook</a> </h2>
-                <p class="fragment">Some notable cells from the notebook...</p>
-            </section>
 
-            <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2"
-                data-markdown data-separator="___" data-background-color=#2D2D2D>
-                <textarea data-template>
-```py [1-2|4-5|7-8]
-# Above ground, first return DSM for entire state
-dsm = 'https://kyraster.ky.gov/arcgis/rest/services/ElevationServices/Ky_DSM_First_Return_5FT_Phase1/ImageServer'
-
-# Load raster
-a = arcpy.sa.Raster(dsm)
-
-# verify
-a
-```
-___
-```py [1-3|5-6|8-11]
-# Extract AOI and save to new layer
-b = arcpy.sa.ExtractByMask(a, 'square_aoi')
-b.save('original')
-
-# Copy original raster to a 16-bit integer raster.
-arcpy.management.CopyRaster(b, 'temp', '#',  '#',  '#',  '#',  '#',  '16_BIT_UNSIGNED', True)
-
-# Load raster and get statistics
-c = arcpy.sa.Raster('temp')
-c.getStatistics()
-```
-___
-```py [1-3|5-8]
-# load low and high values
-lo = c.minimum
-hi = c.maximum
-
-# Rescale raster to full range of integer values in 16-bit format, 0-65,535
-d = ((c - lo) / (hi - lo))*65535
-print(d.getStatistics())
-d.save('scaled')
-```
-___
-```py [1-2|4-6]
-# Export TIFF
-arcpy.management.CopyRaster('scaled', f'{root}\\{folder}\\elevations.tif', '#',  '#',  '#',  '#',  '#',  '16_BIT_UNSIGNED', True)
-
-# Get pixel dimensions of raster for setting Blender parameters
-size = arcpy.GetRasterProperties_management(d, 'COLUMNCOUNT')
-print(f'Use this dimension for the X, Y size in Blender: {size.getOutput(0)}')
-```
-___
-```py [1-4|1-7]
-# Get aerial imagery
-naip = 'https://kyraster.ky.gov/arcgis/rest/services/ImageryServices/Ky_NAIP_2020_2ft/ImageServer'
-e = arcpy.sa.Raster(naip)
-f = arcpy.sa.ExtractByMask(e, 'square_aoi')
-
-#Verify
-f
-```
-___
-```py [1-3|1-6]
-# Make and save NDVI
-g = arcpy.sa.NDVI(f)
-g.save('ndvi')
-
-# Verify
-g
-```
-            </textarea>
+            <section data-pre-load data-background-iframe="https://contig.us/hawaii/terrain/#12/38.025/-84.5"
+                data-background-opacity="1">
             </section>
 
             <section data-pre-load

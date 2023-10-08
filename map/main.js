@@ -35,13 +35,13 @@ const map = new maplibregl.Map({
       },
       hillshade: {
         type: "raster",
-        tiles: [hillshade],
+        tiles: [kyfromabove],
         tileSize: 512,
       },
       dem: {
         type: "raster-dem",
-        // url: "https://contig.us/data/tiles/pine-mtn/terrain.json",
-        url: "terrain.json",
+        url: "https://contig.us/data/tiles/pine-mtn/terrain.json",
+        // url: "terrain.json",
       },
     },
     layers: [
@@ -172,7 +172,7 @@ map.on("click", function (e) {
 map.on("load", function () {
   map.setTerrain({
     source: "dem",
-    exaggeration: 2, // for Terrarium
-    // exaggeration: 0.0005, // for self-hosted terrain
+    // exaggeration: 2, // for Terrarium
+    exaggeration: 0.0005, // for self-hosted terrain
   });
 });

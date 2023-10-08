@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8" />
-  <title>Kentucky hillshade with terrain tiles</title>
+  <title>Terrain tiles</title>
   <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
   <script src="https://unpkg.com/maplibre-gl@3.0.1/dist/maplibre-gl.js"></script>
   <link href="https://unpkg.com/maplibre-gl@3.0.1/dist/maplibre-gl.css" rel="stylesheet" />
@@ -34,14 +34,14 @@
             type: "raster-dem",
             // https://registry.opendata.aws/terrain-tiles/
             url: "terrain.json",
-            tileSize: 256,
+            tileSize: 512,
           },
           hillshade: {
             type: "raster",
             tiles: [
               "https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png",
             ],
-            tileSize: 256,
+            tileSize: 512,
             maxzoom: 15,
           },
         },
