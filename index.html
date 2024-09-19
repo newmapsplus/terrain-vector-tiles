@@ -56,7 +56,7 @@
         </div>
         <div class="slides">
             <section data-pre-load
-                data-background-image="https://outragegis.com/weather/img/animation/yesterday/LookRock.gif"
+                data-background-image="https://www.outragegis.com/data/weather/img/animation/230919/LookRock.gif"
                 data-background-opacity="0.4">
                 <h5>3D & vector tiles</h5>
                 <h4>Join along @<a href="https://boyd.xyz/w">boyd.xyz/v</a></h4>
@@ -68,7 +68,7 @@
                 <div class='lr'>Open-source and self-hosted web map solutions</div>
             </section>
             <section data-pre-load
-                data-background-image="https://outragegis.com/weather/img/animation/yesterday/LookRock.gif"
+                data-background-image="https://www.outragegis.com/data/weather/img/animation/230919/LookRock.gif"
                 data-background-opacity="0.4">
                 <img width="100%" src="https://uky-gis.github.io/geo509/slides/images/logo-uk-geo.png" />
 
@@ -78,7 +78,7 @@
                 <h3>Boyd Shearer</h3>
                 <ul>
                     <li class='fragment'>
-                        Lecturer, UKy Department of Geography.
+                        Senior Lecturer, UKy Department of Geography.
                     </li>
                     <li class='fragment'>
                         Online Digital Mapping program <a href="https://newmapsplus.as.uky.edu/" target="_blank">🔗</a>
@@ -136,8 +136,9 @@
                 <h3>Examples</h3>
                 <ul>
                     <li class='fragment'>
-                        Interactive choropleth maps. <a href="https://contig.us/hawaii/unemployment/"
-                            target="_blank">🔗</a>
+                        Interactive choropleth maps. <a href="https://contig.us/hawaii/unemployment/index-old.html"
+                            target="_blank">🔗</a> <span class="fragment"> Ok... <a href="https://contig.us/hawaii/unemployment/"
+                                target="_blank">🔗</a></span>
                     </li>
                     <li class='fragment'>
                         Querying APIs for data. <a href="https://contig.us/hawaii/census-api-example/" target="_blank">🔗</a>
@@ -182,13 +183,13 @@
                 <h3>Mapzen</h3>
                 <ul>
                     <li class='fragment'>
-                        Terrain tiles, 2016. <a href="https://www.mapzen.com/blog/terrain-tile-service/">🔗</a>
+                        Terrain tiles, 2016. <a target='_blank' href="https://www.mapzen.com/blog/terrain-tile-service/">🔗</a>
                     </li>
                     <li class='fragment'>
                         World-wide elevation data from 3DEP, SRTM, etc.
                     </li>
                     <li class='fragment'>
-                        Hosted as public domain tiles on AWS S3. <a
+                        Hosted as public domain tiles on AWS S3. <a target='_blank' 
                             href="https://registry.opendata.aws/terrain-tiles/">🔗</a>
                     </li>
                 </ul>
@@ -199,18 +200,25 @@
             </section>
 
             <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2">
-                <h3>RGB DEM</h3>
+                <h3>DEM data in the browser?</h3>
                 <ul>
                     <li class='fragment'>
-                        Browser's can't render high bit-depth rasters.
+                        32-bit rasters <span class="fragment">won't work.</span> 
                     </li>
                     <li class='fragment'>
-                        32-bit to 8-bit depth PNG tiles.
-                    </li>
-                    <li class='fragment'>
-                        <code>z_meters = (red * 256 + green + blue / 256) - 32768</code>
+                        RGBify it <span class="fragment">and tile it for web browsers. <a target='_blank'  href="https://github.com/syncpoint/terrain-rgb">🔗</a> </span> 
                     </li>
                 </ul>
+            </section>
+
+            <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2"
+                data-markdown data-separator="___" data-background-color=#2D2D2D>
+                <textarea data-template>
+                        ```py 
+                        # Plugin RGB values to get elevation
+                        elev = -10000 + (({R} * 256 * 256 + {G} * 256 + {B}) * 0.1)
+                        ```
+                                    </textarea>
             </section>
 
 
@@ -222,7 +230,7 @@
                 <h3>MapLibre GL JS</h3>
                 <ul>
                     <li class='fragment'>
-                        2021 fork of Mapbox GL JS. <a href="https://github.com/maplibre">🔗</a>
+                        2021 fork of Mapbox GL JS. <a target='_blank'  href="https://github.com/maplibre">🔗</a>
                     </li>
                     <li class='fragment'>
                         Open-source WebGL JavaScript library.
